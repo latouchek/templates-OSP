@@ -1,1 +1,1 @@
-# A collection of OSP Templates I used at customers
+# A collection of working OSP Templates
