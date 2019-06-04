@@ -1,0 +1,49 @@
+# A Heat environment file which can be used to enable a
+# a Neutron Cisco Aci backend on the controller, configured via puppet
+resource_registry:
+
+  #controller
+  OS::TripleO::ControllerExtraConfigPre: /opt/ciscoaci-tripleo-heat-templates//nodepre.yaml
+  OS::TripleO::Services::NeutronL3Agent: OS::Heat::None
+  OS::TripleO::Services::NeutronOvsAgent: /opt/ciscoaci-tripleo-heat-templates/docker/services/cisco_opflex.yaml
+  OS::TripleO::Docker::NeutronMl2PluginBase: /opt/ciscoaci-tripleo-heat-templates/puppet/services/ciscoaci-ml2.yaml
+  OS::TripleO::Services::CiscoAciAIM: /opt/ciscoaci-tripleo-heat-templates/docker/services/cisco_aciaim.yaml
+
+  #compute
+  OS::TripleO::ComputeExtraConfigPre: /opt/ciscoaci-tripleo-heat-templates//nodepre.yaml
+  OS::TripleO::Services::ComputeNeutronOvsAgent: /opt/ciscoaci-tripleo-heat-templates/docker/services/cisco_opflex.yaml
+  OS::TripleO::Services::ComputeNeutronCorePlugin: /opt/ciscoaci-tripleo-heat-templates/puppet/services/ciscoaci_compute.yaml
+  OS::TripleO::Services::ComputeNeutronMetadataAgent: /opt/ciscoaci-tripleo-heat-templates/docker/services/compute-neutron-metadata.yaml
+
+
+  OS::TripleO::Services::CiscoAciLldp: /opt/ciscoaci-tripleo-heat-templates/docker/services/cisco_lldp.yaml
+  #OS::TripleO::Services::CiscoAciLldp: OS::Heat::None
+
+parameter_defaults:
+  NeutronSfcDriver: 'aim'
+  NeutronFcDriver: 'aim'
+  AdminPassword: 'admin0123'
+  DockerInsecureRegistryAddress: 172.16.0.1:8787
+  NeutronCorePlugin: 'ml2plus'
+  NeutronPluginMl2PuppetTags: 'neutron_plugin_ml2,neutron_plugin_cisco_aci'
+  NeutronServicePlugins: 'group_policy,ncp,apic_aim_l3'
+  EnablePackageInstall: true
+  NeutronEnableIsolatedMetadata: true
+  NeutronEnableForceMetadata: true
+  ACIScopeNames: true
+  ACIYumRepo: http://172.16.0.1/acirepo
+  ACIApicHosts: 138.215.222.151,138.215.222.152,138.215.222.153
+  ACIApicUsername: admin
+  ACIApicPassword: Cotag2005
+  ACIApicSystemId: TV_OpenStack
+  ACIMechanismDrivers: 'apic_aim'
+  ACIApicEntityProfile: OpenStackInfra_AEP
+  ACIApicInfraVlan: 3967
+  ACIApicInfraSubnetGateway: 10.50.0.30  
+  ACIApicInfraAnycastAddr: 10.50.0.32
+  ACIOpflexUplinkInterface: bond1
+  ACIOpflexEncapMode: vxlan
+  HeatEnginePluginDirs: /usr/lib64/heat,/usr/lib/heat,/usr/local/lib/heat,/usr/local/lib64/heat,/usr/lib/python2.7/site-packages/gbpautomation/heat
+  #NeutronGlobalPhysnetMtu: 9000
+  ACIOpflexInterfaceMTU: 9000
+  NeutronPluginMl2PuppetTags: 'neutron_plugin_ml2,neutron_plugin_cisco_aci,neutron_sfc_service_config'

@@ -1,0 +1,21 @@
+resource_registry:
+  OS::TripleO::Compute::Net::SoftwareConfig: /home/stack/templates/nic-configs/compute.yaml
+  OS::TripleO::Controller::Net::SoftwareConfig: /home/stack/templates/nic-configs/controller.yaml
+  OS::TripleO::CephStorage::Net::SoftwareConfig: /home/stack/templates/nic-configs/ceph-storage.yaml
+parameter_defaults:
+
+  ControlPlaneSubnetCidr: "24"
+  ControlPlaneDefaultRoute: 172.16.0.1
+  EC2MetadataIp: 172.16.0.1
+  DnsServers: ["138.215.96.186","138.215.96.145"]
+  NtpServer: '138.215.96.248'
+  BondInterfaceOvsOptions: "mode=802.3ad lacp_rate=fast updelay=1000 miimon=100"
+  TimeZone: 'Europe/Stockholm'
+  BarbicanSimpleCryptoGlobalDefault: true
+  ServiceNetMap:
+    KeystoneAdminApiNetwork: external
+  NetworkDeploymentActions: ['CREATE','UPDATE']
+  NeutronEnableIsolatedMetadata: 'True'
+  ExtraConfig:
+    neutron::dns_domain: swc.lab
+    nova::network::neutron::dhcp_domain: swc.lab

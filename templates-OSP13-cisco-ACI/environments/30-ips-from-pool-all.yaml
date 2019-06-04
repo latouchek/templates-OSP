@@ -1,0 +1,104 @@
+resource_registry:
+  OS::TripleO::Controller::Ports::ExternalPort: /usr/share/openstack-tripleo-heat-templates/network/ports/external_from_pool.yaml
+  OS::TripleO::Controller::Ports::InternalApiPort: /usr/share/openstack-tripleo-heat-templates/network/ports/internal_api_from_pool.yaml
+  OS::TripleO::Controller::Ports::StoragePort: /usr/share/openstack-tripleo-heat-templates/network/ports/storage_from_pool.yaml
+  OS::TripleO::Controller::Ports::StorageMgmtPort: /usr/share/openstack-tripleo-heat-templates/network/ports/storage_mgmt_from_pool.yaml
+  OS::TripleO::Controller::Ports::TenantPort: /usr/share/openstack-tripleo-heat-templates/network/ports/tenant_from_pool.yaml
+
+  OS::TripleO::Compute::Ports::ExternalPort: /usr/share/openstack-tripleo-heat-templates/network/ports/external_from_pool.yaml
+  OS::TripleO::Compute::Ports::InternalApiPort: /usr/share/openstack-tripleo-heat-templates/network/ports/internal_api_from_pool.yaml
+  OS::TripleO::Compute::Ports::StoragePort: /usr/share/openstack-tripleo-heat-templates/network/ports/storage_from_pool.yaml
+  OS::TripleO::Compute::Ports::StorageMgmtPort: /usr/share/openstack-tripleo-heat-templates/network/ports/storage_mgmt_from_pool.yaml
+  OS::TripleO::Compute::Ports::TenantPort: /usr/share/openstack-tripleo-heat-templates/network/ports/tenant_from_pool.yaml
+
+  OS::TripleO::CephStorage::Ports::ExternalPort: /usr/share/openstack-tripleo-heat-templates/network/ports/noop.yaml
+  OS::TripleO::CephStorage::Ports::InternalApiPort: /usr/share/openstack-tripleo-heat-templates/network/ports/noop.yaml
+  OS::TripleO::CephStorage::Ports::StoragePort: /usr/share/openstack-tripleo-heat-templates/network/ports/storage_from_pool.yaml
+  OS::TripleO::CephStorage::Ports::StorageMgmtPort: /usr/share/openstack-tripleo-heat-templates/network/ports/storage_mgmt_from_pool.yaml
+  OS::TripleO::CephStorage::Ports::TenantPort: /usr/share/openstack-tripleo-heat-templates/network/ports/noop.yaml
+
+  OS::TripleO::SwiftStorage::Ports::ExternalPort: /usr/share/openstack-tripleo-heat-templates/network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::InternalApiPort: /usr/share/openstack-tripleo-heat-templates/network/ports/internal_api_from_pool.yaml
+  OS::TripleO::SwiftStorage::Ports::StoragePort: /usr/share/openstack-tripleo-heat-templates/network/ports/storage_from_pool.yaml
+  OS::TripleO::SwiftStorage::Ports::StorageMgmtPort: /usr/share/openstack-tripleo-heat-templates/network/ports/storage_mgmt_from_pool.yaml
+  OS::TripleO::SwiftStorage::Ports::TenantPort: /usr/share/openstack-tripleo-heat-templates/network/ports/noop.yaml
+
+  OS::TripleO::BlockStorage::Ports::ExternalPort: /usr/share/openstack-tripleo-heat-templates/network/ports/noop.yaml
+  OS::TripleO::BlockStorage::Ports::InternalApiPort: /usr/share/openstack-tripleo-heat-templates/network/ports/internal_api_from_pool.yaml
+  OS::TripleO::BlockStorage::Ports::StoragePort: /usr/share/openstack-tripleo-heat-templates/network/ports/storage_from_pool.yaml
+  OS::TripleO::BlockStorage::Ports::StorageMgmtPort: /usr/share/openstack-tripleo-heat-templates/network/ports/storage_mgmt_from_pool.yaml
+  OS::TripleO::BlockStorage::Ports::TenantPort: /usr/share/openstack-tripleo-heat-templates/network/ports/noop.yaml
+
+parameter_defaults:
+  ControllerIPs:
+    # Each controller will get an IP from the lists below, first controller, first IP
+    external:
+    - 172.19.100.20
+    - 172.19.100.21
+    - 172.19.100.22
+    internal_api:
+    - 10.52.252.20
+    - 10.52.252.21
+    - 10.52.252.22
+    storage:
+    - 10.52.254.20
+    - 10.52.254.21
+    - 10.52.254.22
+    storage_mgmt:
+    - 10.52.255.20
+    - 10.52.255.21
+    - 10.52.255.22
+    tenant:
+    - 10.52.253.20
+    - 10.52.253.21
+    - 10.52.253.22
+    # management:
+    # - 10.142.51.60
+    # - 10.142.51.61
+    # - 10.142.51.62
+  ComputeIPs:
+    # Each compute will get an IP from the lists below, first compute, first IP
+    external:
+    - 172.19.100.30
+    - 172.19.100.31
+    - 172.19.100.32
+    - 172.19.100.33
+    - 172.19.100.34
+    - 172.19.100.35
+    internal_api:
+    - 10.52.252.30
+    - 10.52.252.31
+    - 10.52.252.32
+    - 10.52.252.33
+    - 10.52.252.34
+    - 10.52.252.35
+    storage:
+    - 10.52.254.30
+    - 10.52.254.31
+    - 10.52.254.32
+    - 10.52.254.33
+    - 10.52.254.34
+    - 10.52.254.35
+    tenant:
+    - 10.52.253.30
+    - 10.52.253.31
+    - 10.52.253.32
+    - 10.52.253.33
+    - 10.52.253.34
+    - 10.52.253.35
+    # management:
+    # - 10.142.51.70
+    # - 10.142.51.71
+
+  # CephStorageIPs:
+  #   # Each ceph node will get an IP from the lists below, first node, first IP
+  #   storage:
+  #   - 10.52.254.40
+  #   - 10.52.254.41
+  #   - 10.52.254.42
+  #   - 10.52.254.43
+  #   storage_mgmt:
+  #   - 10.52.255.40
+  #   - 10.52.255.41
+  #   - 10.52.255.42
+  #   - 10.52.255.43

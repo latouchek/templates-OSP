@@ -1,0 +1,18 @@
+parameter_defaults:
+
+  ControllerCount: 1
+  OvercloudControllerFlavor: control
+  # ControllerSchedulerHints:
+  #   'capabilities:node': 'controller-%index%'
+
+  ComputeCount: 3
+  OvercloudComputeFlavor: compute
+  # ComputeSchedulerHints:
+  #   'capabilities:node': 'compute-%index%'
+
+  CephStorageCount: 0
+  OvercloudCephStorageFlavor: ceph-storage
+  # CephStorageSchedulerHints:
+  #   'capabilities:node': 'ceph-%index%'
+
+  BarbicanSimpleCryptoGlobalDefault: true

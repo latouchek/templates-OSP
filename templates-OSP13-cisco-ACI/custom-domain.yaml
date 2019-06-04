@@ -1,0 +1,9 @@
+# As of today, TripleO does NOT add the VIP FQDNs (the ones below) into IPA. To do so please run ~/script/add_dns_entries.sh
+
+parameter_defaults:
+  CloudDomain: swc.lab
+  CloudName: openstack-cph.swc.lab
+  CloudNameCtlplane: overcloud.openstack-cph-ctlplane.swc.lab
+  CloudNameInternal: overcloud.openstack-cph-internalapi.swc.lab
+  CloudNameStorage: overcloud.openstack-cph-storage.swc.lab
+  CloudNameStorageManagement: overcloud.openstack-cph-storagemgmt.swc.lab

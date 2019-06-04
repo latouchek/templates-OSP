@@ -1,0 +1,12 @@
+resource_registry:
+  OS::TripleO::Network::Ports::ExternalVipPort: /usr/share/openstack-tripleo-heat-templates/network/ports/external.yaml
+  OS::TripleO::Network::Ports::InternalApiVipPort: /usr/share/openstack-tripleo-heat-templates/network/ports/internal_api.yaml
+  OS::TripleO::Network::Ports::StorageVipPort: /usr/share/openstack-tripleo-heat-templates/network/ports/storage.yaml
+  OS::TripleO::Network::Ports::StorageMgmtVipPort: /usr/share/openstack-tripleo-heat-templates/network/ports/storage_mgmt.yaml
+
+parameter_defaults:
+  # The VIPs that the balancer holds for each network. These are the addresses previously binded in the load balancing configuration.
+  ExternalNetworkVip: 172.19.100.2
+  InternalApiNetworkVip: 10.52.252.59
+  StorageNetworkVip: 10.52.254.59
+  StorageMgmtNetworkVip: 10.52.255.59 # TODO: replace with the private network

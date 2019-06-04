@@ -1,0 +1,15 @@
+parameter_defaults:
+  HostnameMap:
+    overcloud-controller-0: tullverket-controller-0
+    #overcloud-controller-1: PHYPLINF1439
+    #overcloud-controller-2: PHYPLINF1441
+    overcloud-compute-0: tullverket-compute-0
+    overcloud-compute-1: tullverket-compute-1
+    overcloud-compute-2: tullverket-compute-2
+    #overcloud-compute-3: PHYPLINF1436
+    #overcloud-compute-4: PHYPLINF1437
+    #overcloud-compute-5: PHYPLINF1438
+    #overcloud-cephstorage-0: PHYPLINF1440
+    #overcloud-cephstorage-1: PHYPLINF1431
+    #overcloud-cephstorage-2: PHYPLINF1432
+    #overcloud-cephstorage-3: PHYPLINF1434
